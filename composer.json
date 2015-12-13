@@ -1,0 +1,24 @@
+{
+  "name": "pceuropa/yii2-menu",
+  "description": "Yii2 menu generator, creator",
+  "keywords": [
+    "yii2",
+    "extension",
+    "menu"
+  ],
+  "homepage": "https://github.com/pceuropa/yii2-menu",
+  "type": "yii2-extension",
+  "license": "The MIT License",
+  "authors": [
+    {
+      "name": "Rafal Marguzewicz",
+      "email": "info@pceuropa.net",
+      "homepage": "http://pceuropa.net/"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "pceuropa\\menu\\": ""
+    }
+  }
+}
