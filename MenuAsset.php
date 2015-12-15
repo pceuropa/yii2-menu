@@ -1,5 +1,4 @@
-<?php 
-namespace pceuropa\menu;
+<?php namespace pceuropa\menu;
 
 use yii\web\AssetBundle;
 
