@@ -29,10 +29,8 @@ Add the following code to config file Yii2
 
 $menu = new pceuropa\menu\Module([]);
 
-NavBar::begin([
-                'brandLabel' => 'Brand',
-                'brandUrl' => Url::home(),
-            ]);
+NavBar::begin(['brandLabel' => 'Brand','brandUrl' => Url::home(),]);
+
 echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-left'],
 					'items' => $menu->Left() 
 				]);	
@@ -43,3 +41,5 @@ echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-right'],
 NavBar::end();
 
 ```
+
+Version 1.1
