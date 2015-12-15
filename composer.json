@@ -1,27 +1,28 @@
 {
-  "name": "pceuropa/yii2-menu",
-  "description": "Menu bootstrap creator/manager. Sort by drag and drop",
-  "keywords": [
-    "yii2",
-    "extension",
-    "creator",
-    "drag end drop",
-    "bootstrap menu"
-  ],
-  "version": "1.2.0",
-  "homepage": "https://github.com/pceuropa/yii2-menu",
-  "type": "yii2-extension",
-  "license": "The MIT License",
-  "authors": [
-    {
-      "name": "Rafal Marguzewicz",
-      "email": "info@pceuropa.net",
-      "homepage": "http://pceuropa.net/"
-    }
-  ],
-  "autoload": {
-    "psr-4": {
-      "pceuropa\\menu\\": ""
-    }
-  }
+	"name": "pceuropa/yii2-menu",
+	"description": "Menu bootstrap creator/manager. Sort by drag and drop",
+	"keywords": [
+		"yii2",
+		"extension",
+		"creator",
+		"drag end drop",
+		"bootstrap menu"
+	],
+	"version": "1.2.0",
+	"homepage": "https://github.com/pceuropa/yii2-menu",
+	"type": "yii2-extension",
+	"license": "MIT",
+	"minimum-stability": "dev",
+	"authors": [
+		{
+		  "name": "Rafal Marguzewicz",
+		  "email": "info@pceuropa.net",
+		  "homepage": "http://pceuropa.net/"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+		  "pceuropa\\menu\\": ""
+		}
+	}
 }
