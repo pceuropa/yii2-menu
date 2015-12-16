@@ -3,12 +3,12 @@ namespace pceuropa\menu;
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use pceuropa\menu\models\Menus;
+use pceuropa\menu\models\Model;
 use yii\bootstrap\Dropdown;
 
 class Module extends \yii\base\Module
 {
-public $controllerNamespace = 'vendor\pceuropa\menu\controllers';
+public $controllerNamespace = 'pceuropa\menu\controllers';
 public $defaultRoute = 'index';
 
 const NAV_ID_LEFT = 0;
@@ -27,13 +27,13 @@ public function init(){
 	
 public function Left(){
 
-	$m = Menus::find()->where("gr != 1")->orderBy(self::$sortOption)->all();
+	$m = Model::find()->where("gr != 1")->orderBy(self::$sortOption)->all();
 	return $this->toArray($m, self::NAV_ID_LEFT);
 }
 
 public function Right(){
 
-	$m = Menus::find()->where("gr != 0")->orderBy(self::$sortOption)->all();
+	$m = Model::find()->where("gr != 0")->orderBy(self::$sortOption)->all();
 	return $this->toArray($m, self::NAV_ID_RIGHT);
 }
 
@@ -84,7 +84,7 @@ private function toArray($model, $nav){
 }
 
 public function whichElementsDrop(){
-	$elements = Menus::find()->where(['url' => "#"])->asArray()->all();
+	$elements = Model::find()->where(['url' => "#"])->asArray()->all();
 	
 	$txt = '';
 	foreach ($elements as $v){

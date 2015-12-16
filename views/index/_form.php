@@ -19,7 +19,7 @@ $form = ActiveForm::begin(
 <div class="col-md-2"><?= $form->field($model, 'type')->dropDownList(['Link', 'Dropmenu']);?></div>
 
 <div class="col-md-4"><?= $form->field($model, 'name') ?> </div>
-<div class="col-md-6"><?= $form->field($model, 'url') ?> </div>
+<div class="col-md-6"><?= $form->field($model, 'url')->textInput(['id' => 'input-create-url']); ?> </div>
 </div>
 <div class="col-md-1 col-md-offset-10">
 	<?= Html::SubmitButton('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>', ['class' => 'btn btn-success']) ?>
@@ -32,9 +32,9 @@ $form = ActiveForm::begin(
 $this->registerJS("
 $( 'select' ).on( 'change', function (){
 	if ($('select').val() == 1){
-        $('#menus-url').val('#').prop('disabled', true);
+        $('#input-create-url').val('#').prop('disabled', true);
     } else {
-        $('#menus-url').val('').prop('disabled', false);
+        $('#input-create-url').val('').prop('disabled', false);
     }
 });
 

@@ -1,48 +1,40 @@
-<?php
-
-namespace pceuropa\menu\controllers;
+<?php namespace pceuropa\menu\controllers;
 
 use Yii;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\bootstrap\ActiveForm;
-use vendor\pceuropa\menu\models\Menus;
 use yii\web\NotFoundHttpException;
-
-
+use pceuropa\menu\models\Model;
 
 class IndexController extends Controller
 {
 	// public $layout = 'post';
 	
 public function actionIndex()
-    {
-        $model = new Menus();
-		return $this->render('index', ['model' => $model]);
-		
-    }
+{
+	$m = new Model();
+	return $this->render('index', ['model' => $m]);
 	
-
+}
 
 public function actionCreate() {
 	
-	$model = new Menus();
+	$m = new Model();
     $request = Yii::$app->request;
 	
-    if ($request->isAjax && $model->load($request->post())) {
+    if ($request->isAjax && $m->load($request->post())) {
 		
-		if($model->type == 1){$model->url = '#';}
+		if($m->type == 1){$m->url = '#';}
 		
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        return ['success' => $model->save()];
+        return ['success' => $m->save()];
     }
-	
-
 }
 
 public function actionValidate(){
 	
-    $m = new Menus();
+    $m = new Model();
     $req = Yii::$app->request;
 
     if ($req->isPost && $m->load($req->post())) {
@@ -55,37 +47,36 @@ public function actionValidate(){
 public function actionUpdate($id)
 {
 	
-	$model = $this->findModel($id);
+	$m = $this->findModel($id);
 	$request = Yii::$app->request;
 	
 	
-	 if ($request->isAjax && $model->load($request->post())) {
+	 if ($request->isAjax && $m->load($request->post())) {
 		
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        return ['success' => $model->save()];
+        return ['success' => $m->save()];
     }
 	
-    return $this->renderAjax('_formUpdate', ['model' => $model,]);
-   
+    return $this->renderAjax('_formUpdate', ['model' => $m,]);
 }
 
 
 public function actionDelete()
-    {
-        $r = Yii::$app->request;
-		$id = $r->post('id');
-		
-		\Yii::$app->response->format = Response::FORMAT_JSON;
-		return ['success' => $this->findModel($id)->delete()];
-    }
+{
+	$r = Yii::$app->request;
+	$id = $r->post('id');
+	
+	\Yii::$app->response->format = Response::FORMAT_JSON;
+	return ['success' => $this->findModel($id)->delete()];
+}
 
 protected function findModel($id)
-    {
-        if (($model = Menus::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
+{
+	if (($m = Model::findOne($id)) !== null) {
+		return $m;
+	} else {
+		throw new NotFoundHttpException('The requested page does not exist.');
+	}
+}
 
 }
