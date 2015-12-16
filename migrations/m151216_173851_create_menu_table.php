@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m151216_173854_create_menu_table extends Migration
+class m151216_173851_create_menu_table extends Migration
 {
     public function up()
     {
@@ -19,7 +19,7 @@ class m151216_173854_create_menu_table extends Migration
 
     public function down()
     {
-        echo "m151216_173854_create_menu_table cannot be reverted.\n";
+        echo "m151216_173851_create_menu_table cannot be reverted.\n";
         return false;
     }
 

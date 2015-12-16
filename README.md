@@ -24,7 +24,19 @@ Add the following code to config file Yii2
 ```
 
 ## Configuration
-Add the following code to config file Yii2
+
+### 1. Create database schema
+
+Make sure that you have properly configured `db` application component
+and run the following command:
+
+```bash
+$ php yii migrate/create --migrationPath=@vendor/pceuropa/yii2-menu/migrations
+
+```
+
+
+### 2. Add the following code to config file Yii2
 ```php
 
 $menu = new pceuropa\menu\Module([]);
