@@ -16,13 +16,14 @@ $form = ActiveForm::begin(
 );?>
 
 <div class="row">
-<div class="col-md-2"><?= $form->field($model, 'type')->dropDownList(['Link', 'Dropmenu']);?></div>
+<div class="col-md-2"><?= $form->field($model, 'type')->dropDownList(['Link', 'Dropdown', 'Line (divider)']);?></div>
 
-<div class="col-md-4"><?= $form->field($model, 'name') ?> </div>
-<div class="col-md-6"><?= $form->field($model, 'url')->textInput(['id' => 'input-create-url']); ?> </div>
+<div class="col-md-4"><?= $form->field($model, 'name')->textInput(['id' => 'create-name']); ?> </div>
+<div class="col-md-6"><?= $form->field($model, 'url')->textInput(['id' => 'create-url']); ?> </div>
 </div>
-<div class="col-md-1 col-md-offset-10">
-	<?= Html::SubmitButton('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>', ['class' => 'btn btn-success']) ?>
+<div id="additional-info" class="col-md-8"></div>
+<div class="col-md-1">
+	<?= Html::SubmitButton('<span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Add', ['class' => 'btn btn-success']) ?>
 </div>
 
 
@@ -31,11 +32,26 @@ $form = ActiveForm::begin(
 <?php ActiveForm::end(); 
 $this->registerJS("
 $( 'select' ).on( 'change', function (){
-	if ($('select').val() == 1){
-        $('#input-create-url').val('#').prop('disabled', true);
-    } else {
-        $('#input-create-url').val('').prop('disabled', false);
-    }
+	
+switch(true) {
+    case ($('select').val() == 0):
+		$('#create-name, #create-url').val('').prop('disabled', false);
+			$( '#additional-info' ).html('Possible values Url field: /address_url, http://example/');
+			break;
+    case ($('select').val() == 1):
+        $('#create-name').val('').prop('disabled', false); 
+        $('#create-url').val('#').prop('disabled', true); 
+		$( '#additional-info' ).html('Toggleable menu for displaying lists of links');
+		break;
+	case ($('select').val() == 2):
+        $('#create-name').val('OnlyToDropMenu').prop('disabled', false); 
+        $('#create-url').val('').prop('disabled', true); 
+		$( '#additional-info' ).html('After adding, drag to the dropmenu. In dropmenu little hard to drag but possible');break;
+    default:
+        $('#create-url').val('').prop('disabled', true);
+} 
+
+
 });
 
 

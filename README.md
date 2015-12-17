@@ -3,11 +3,12 @@ Bootstrap menu menager for Yii2
 
 [![Latest Stable Version](https://poser.pugx.org/pceuropa/yii2-menu/v/stable)](https://packagist.org/packages/pceuropa/yii2-menu) [![Total Downloads](https://poser.pugx.org/pceuropa/yii2-menu/downloads)](https://packagist.org/packages/pceuropa/yii2-menu) [![Latest Unstable Version](https://poser.pugx.org/pceuropa/yii2-menu/v/unstable)](https://packagist.org/packages/pceuropa/yii2-menu) [![License](https://poser.pugx.org/pceuropa/yii2-menu/license)](https://packagist.org/packages/pceuropa/yii2-menu)
 
-## Backend features
+## Features
 
  * Creating links and drop menus in the navbar-left and/or navbar-right
  * Sorting, editing, and deleting using drag and drop
- * No jQuery for drag and drop (but there is support - Ajax CRUD)
+ * No jQuery for drag and drop ([RubaXa/Sortable](/RubaXa/Sortable))
+ * CRUD operations by jQuery Ajax)
  
 ## Installation
 ```
@@ -31,7 +32,7 @@ Make sure that you have properly configured `db` application component
 and run the following command:
 
 ```bash
-$ php yii migrate/create --migrationPath=@vendor/pceuropa/yii2-menu/migrations
+$ php yii migrate/up --migrationPath=@vendor/pceuropa/yii2-menu/migrations
 
 ```
 
@@ -53,4 +54,5 @@ echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-right'],
 NavBar::end();
 
 ```
-[Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=patriota%40or7%2eeu&lc=PL&item_name=Rafal%20Marguzewicz&no_note=1&no_shipping=1&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+
+Author: [@Marguzewicz](https://twitter.com/Marguzewicz) | [Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=patriota%40or7%2eeu&lc=PL&item_name=Rafal%20Marguzewicz&no_note=1&no_shipping=1&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)

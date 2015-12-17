@@ -17,9 +17,9 @@ public function actionIndex(){
 public function actionSameGroup(){
 
 	$r = Yii::$app->request;
-	$id = $r->post('gr');
+	$gr = substr($r->post('gr'), 2);
 
-	$array = Model::find()->select('menu_id')->where(["gr" => $id[2] ])->orderBy(['serialize' => SORT_ASC, 'menu_id' => SORT_ASC])->asArray()->all();
+	$array = Model::find()->select('menu_id')->where(["gr" => $gr ])->orderBy(['serialize' => SORT_ASC, 'menu_id' => SORT_ASC])->asArray()->all();
 	$array = ArrayHelper::getColumn($array, 'menu_id');
 	
 		if ($r->isAjax) {

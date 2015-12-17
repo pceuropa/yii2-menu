@@ -58,23 +58,24 @@ public static function DropMenu($a){
 	
 }
 
-private function toArray($model, $nav){
+private static function toArray($model, $navbar){
 	$a = []; 
 	
 	foreach ($model as $k => $v){ 
 	
-		if ($v->gr == $nav) {
+		if ($v->gr == $navbar) { // main elements in navbar left or right
 			
 			if ($v->url == "#") {	
-				$a[$v->menu_id]['label'] = $v->name ;
-				$a[$v->menu_id]['options'] = ['id' => $v->menu_id] ;
+				$a[$v->menu_id] = ['label' => $v->name, 'options' => ['id' => $v->menu_id]] ;
 			} else { 
 				$a[$v->menu_id] = ['label' => $v->name, 'url' => $v->url, 'id' => $v->menu_id];
 			}
 			
-		} else {
+		} else { // elements of DropMenus
 			
 			if (array_key_exists($v->gr, $a)){
+				$v->name == 'OnlyToDropMenu' ? 
+				$a[$v->gr]['items'][] = '<li id="'.$v->menu_id.'" class="divider">.</li>' :
 				$a[$v->gr]['items'][] = ['label' => $v->name, 'url' => $v->url, 'options' => ['id' => $v->menu_id]];
 			}
 		}
@@ -84,7 +85,7 @@ private function toArray($model, $nav){
 }
 
 public function whichElementsDrop(){
-	$elements = Model::find()->where(['url' => "#"])->asArray()->all();
+	$elements = Model::find()->where(['url' => "#", 'gr' => 0])->asArray()->all();
 	
 	$txt = '';
 	foreach ($elements as $v){

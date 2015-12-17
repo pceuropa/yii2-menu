@@ -5,19 +5,18 @@ use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Modal;
 use yii\widgets\Pjax;
 use pceuropa\menu\Module;
-use pceuropa\menu\MenuAsset;
+pceuropa\menu\MenuAsset::register($this);
 
-
-MenuAsset::register($this);
 $this->registerCss('
 #ul0, #ul1 {border: solid 1px #E0DEDE;min-width:20px; min-height:50px}
 .navbar-brand-left {border: solid 1px #F0F0F0;margin-right:0}
-
+#additional-info {color:#9D9B9B;}
+.edit-trash-box {margin-top:40px}
 #trash i, #edit i{
 	font-size:33px;
 	margin-top:10px;
 	color:#ccc
-	}
+}
 #trash li, #edit li{
 	text-align:center;
 	list-style-type: none;
@@ -33,20 +32,16 @@ $this->registerCss('
 
 
 );
+ Pjax::begin([ 	'id' => 'pjaxMenuNav', ]);	?>
 
-Pjax::begin([
-	'id' => 'pjaxMenuNav',
-]);	?>
-
-	<div class="well">
-		<h4>Add link or DropMenu</h4>
+	<div class="row well">
+		<h4>Add element to Menu left</h4>
 		<?= $this->render('_form', ['model' => $model,]) ?>
 		<br />
 	</div>
-	
 
 
-<div id="container-nav">
+<div class="row" id="container-nav">
   <nav class="navbar navbar-default">
         <div class="container-fluid">
           
@@ -88,12 +83,12 @@ Pjax::begin([
 	  
 </div>
 <?php Pjax::end();?>
-<br />
 
-<div class="row">
-	<div id="edit" class="well col-md-2 col-md-offset-2">Drop here to edit<br />
+
+<div class="edit-trash-box row">
+	<div id="edit" class="well col-md-6">Drop here to edit<br />
 	</div>
-	<div id="trash" class="well col-md-2 col-md-offset-3">Drop here to trash<br />
+	<div id="trash" class="well col-md-4 col-md-offset-2">Drop here to trash<br />
 	</div>
 </div>
 
