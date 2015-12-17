@@ -5,9 +5,10 @@ Bootstrap menu menager for Yii2
 
 ## Features
 
- * Creating links and drop menus in the navbar-left and/or navbar-right
+ * Creating links, drop menus, line (diver) in the navbar-left and/or navbar-right
  * Sorting, editing, and deleting using drag and drop
- * No jQuery for drag and drop ([RubaXa/Sortable](/RubaXa/Sortable))
+ 
+ * No jQuery for drag and drop ([RubaXa/Sortable](https://github.com/RubaXa/Sortable))
  * CRUD operations by jQuery Ajax)
  
 ## Installation
