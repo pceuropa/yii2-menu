@@ -28,6 +28,9 @@ $this->registerCss('
 	height:120px;
 	margin-top: 5px;
 }
+.dropdown-menu .divider {
+	height: 5px;
+}
 '
 
 
@@ -35,7 +38,7 @@ $this->registerCss('
  Pjax::begin([ 	'id' => 'pjaxMenuNav', ]);	?>
 
 	<div class="row well">
-		<h4>Add element to Menu left</h4>
+		<h4>Add element</h4>
 		<?= $this->render('_form', ['model' => $model,]) ?>
 		<br />
 	</div>
@@ -109,7 +112,7 @@ var config = {
 	group: "nav",
 	onUpdate: function (evt) {
 		
-		console.log(evt.item); // evt.item.id
+	//	console.log(evt.item); // evt.item.id
 
 		var data = {
 			gr: evt.from.id,

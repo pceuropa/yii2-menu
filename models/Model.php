@@ -1,7 +1,7 @@
 <?php namespace pceuropa\menu\models;
 
 use Yii;
-
+use yii\helpers\ArrayHelper;
 class Model extends \yii\db\ActiveRecord
 {
 public $type;
@@ -20,7 +20,6 @@ public function scenarios()
 
 public function rules(){
 	return [
-		[['name'], 'required'],
 		[['gr', 'serialize', 'type'], 'integer'],
 		[['name', 'url', 'menu_0'], 'string', 'max' => 200],
 	];
@@ -29,9 +28,18 @@ public function rules(){
 public function attributeLabels(){
 	return [
 		'id_menu' => Yii::t('app', 'Id Menu'),
-		'name' => Yii::t('app', 'Text of link'),
+		'name' => Yii::t('app', 'Text'),
 		'url' => Yii::t('app', 'Url'),
 		'gr' => Yii::t('app', 'Group'),
 	];
 }
+
+public function ListOfGroup(){
+	$array_start = [0 => 'navbar-left', 1 => 'navbar-right'];
+	$array_add = ArrayHelper::map(Model::find()->where(["url" => "#dropmenu" ])->all(), 'menu_id', 'name');
+	
+	return ArrayHelper::merge($array_start, $array_add);
+}
+
+
 }

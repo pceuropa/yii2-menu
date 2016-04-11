@@ -25,7 +25,8 @@ public function actionCreate() {
 	
     if ($request->isAjax && $m->load($request->post())) {
 		
-		if($m->type == 1){$m->url = '#';}
+		if($m->type == 1){$m->url = '#dropmenu';}
+		if($m->type == 2){$m->name = '-------';}
 		
         \Yii::$app->response->format = Response::FORMAT_JSON;
         return ['success' => $m->save()];
@@ -46,10 +47,8 @@ public function actionValidate(){
 
 public function actionUpdate($id)
 {
-	
 	$m = $this->findModel($id);
 	$request = Yii::$app->request;
-	
 	
 	 if ($request->isAjax && $m->load($request->post())) {
 		

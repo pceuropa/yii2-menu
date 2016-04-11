@@ -48,7 +48,7 @@ public static function DropMenu($a){
 		$items = [];
 	}
 
-	$dropmenu = '<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$a['label'].'<span class="caret"></span></a>'
+	$dropmenu = '<a href="#dropmenu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">'.$a['label'].'<span class="caret"></span></a>'
     .Dropdown::widget([
             'items' => $items,
 			'options' => ['class' => 'dropdown-menu', 'id' => 'ul'.$a['options']['id']]
@@ -65,7 +65,7 @@ private static function toArray($model, $navbar){
 	
 		if ($v->gr == $navbar) { // main elements in navbar left or right
 			
-			if ($v->url == "#") {	
+			if ($v->url == "#dropmenu") {	
 				$a[$v->menu_id] = ['label' => $v->name, 'options' => ['id' => $v->menu_id]] ;
 			} else { 
 				$a[$v->menu_id] = ['label' => $v->name, 'url' => $v->url, 'id' => $v->menu_id];
@@ -74,8 +74,8 @@ private static function toArray($model, $navbar){
 		} else { // elements of DropMenus
 			
 			if (array_key_exists($v->gr, $a)){
-				$v->name == 'OnlyToDropMenu' ? 
-				$a[$v->gr]['items'][] = '<li id="'.$v->menu_id.'" class="divider">.</li>' :
+				$v->name == '-------' ? 
+				$a[$v->gr]['items'][] = '<li id="'.$v->menu_id.'" class="divider">-------</li>' :
 				$a[$v->gr]['items'][] = ['label' => $v->name, 'url' => $v->url, 'options' => ['id' => $v->menu_id]];
 			}
 		}
@@ -85,7 +85,7 @@ private static function toArray($model, $navbar){
 }
 
 public function whichElementsDrop(){
-	$elements = Model::find()->where(['url' => "#", 'gr' => 0])->asArray()->all();
+	$elements = Model::find()->where(['url' => "#dropmenu", 'gr' => 0])->asArray()->all();
 	
 	$txt = '';
 	foreach ($elements as $v){
@@ -93,5 +93,6 @@ public function whichElementsDrop(){
 	}
 	return $txt;
 }
+
 
 }
