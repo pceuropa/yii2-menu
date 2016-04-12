@@ -58,8 +58,7 @@ NavBar::end();
 
 ```
 
-### 2. Add the following code to config file Yii2
-Several menus in different languages
+### 3. Several menus
 If you need second menu, find in model 
 ```php
 public static function tableName() { 
@@ -77,5 +76,5 @@ public static function tableName() {
 	}
 	
 }
-
+```
 Author: [@Marguzewicz](https://twitter.com/Marguzewicz) | [Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=patriota%40or7%2eeu&lc=PL&item_name=Rafal%20Marguzewicz&no_note=1&no_shipping=1&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
