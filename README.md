@@ -58,4 +58,24 @@ NavBar::end();
 
 ```
 
+### 2. Add the following code to config file Yii2
+Several menus in different languages
+If you need second menu, find in model 
+```php
+public static function tableName() { 
+	return 'menu'; 
+}
+```
+and chagne for it
+
+```php
+public static function tableName() { 
+	if Yii:$app->language == "en" {
+		return 'menu'; 
+	} else {
+	 	return "menu_fr"
+	}
+	
+}
+
 Author: [@Marguzewicz](https://twitter.com/Marguzewicz) | [Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=patriota%40or7%2eeu&lc=PL&item_name=Rafal%20Marguzewicz&no_note=1&no_shipping=1&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
