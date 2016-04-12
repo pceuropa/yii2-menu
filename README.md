@@ -59,13 +59,15 @@ NavBar::end();
 ```
 
 ### 3. Several menus
-If you need second menu, find in model 
+If you need second menu:
+1. you need to create second database (ex menu_fr) 
+2. Find this code in pceuropa/models
 ```php
 public static function tableName() { 
 	return 'menu'; 
 }
 ```
-and chagne for it
+3. and chagne for it
 
 ```php
 public static function tableName() { 
