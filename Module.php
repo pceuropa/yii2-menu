@@ -25,20 +25,20 @@ public function init(){
 }
 	
 	
-public function Left(){
+public static function NavbarLeft(){
 
 	$m = Model::find()->where("gr != 1")->orderBy(self::$sortOption)->all();
-	return $this->toArray($m, self::NAV_ID_LEFT);
+	return self::toArray($m, self::NAV_ID_LEFT);
 }
 
-public function Right(){
+public static function NavbarRight(){
 
 	$m = Model::find()->where("gr != 0")->orderBy(self::$sortOption)->all();
-	return $this->toArray($m, self::NAV_ID_RIGHT);
+	return self::toArray($m, self::NAV_ID_RIGHT);
 }
 
 public static function Link($a){
-	return Html::tag('li', Html::a($a['label'], $a['url']), ['id' => $a['id'], 'class' => 'pc-link']);
+	return Html::tag('li', Html::a($a['label'], $a['url']), ['id' => $a['id'], 'data-id' => $a['id'], 'data-type' => 'link']);
 }
 
 public static function DropMenu($a){
@@ -54,7 +54,7 @@ public static function DropMenu($a){
 			'options' => ['class' => 'dropdown-menu', 'id' => 'ul'.$a['options']['id']]
         ]);
     
-	return Html::tag('li', $dropmenu, ['id' => $a['options']['id'], 'class' => 'pc-link']);
+	return Html::tag('li', $dropmenu, ['id' => $a['options']['id'],  'data-type' => 'dropmenu']);
 	
 }
 
@@ -63,13 +63,12 @@ private static function toArray($model, $navbar){
 	
 	foreach ($model as $k => $v){ 
 	
-		if ($v->gr == $navbar) { // main elements in navbar left or right
+		if ($v->gr == $navbar) { // main elements in navbar 
 			
-			if ($v->url == "#dropmenu") {	
-				$a[$v->menu_id] = ['label' => $v->name, 'options' => ['id' => $v->menu_id]] ;
-			} else { 
+			$v->url == "#dropmenu" ? 
+				$a[$v->menu_id] = ['label' => $v->name, 'options' => ['id' => $v->menu_id,]] :
 				$a[$v->menu_id] = ['label' => $v->name, 'url' => $v->url, 'id' => $v->menu_id];
-			}
+			
 			
 		} else { // elements of DropMenus
 			
@@ -84,8 +83,10 @@ private static function toArray($model, $navbar){
 	return $a;
 }
 
+
+
 public function whichElementsDrop(){
-	$elements = Model::find()->where(['url' => "#dropmenu", 'gr' => 0])->asArray()->all();
+	$elements = Model::find()->where(['url' => "#dropmenu"])->asArray()->all();
 	
 	$txt = '';
 	foreach ($elements as $v){
