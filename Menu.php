@@ -30,7 +30,9 @@ protected function findModel($id){
 	    if (($model = Model::findOne($id)) !== null) {
 	        return $model;
 	    } else {
-	        throw new NotFoundHttpException(Yii::t('app', 'The requested page does not exist.'));
+	        return (object) [
+					'menu' => '{"left" : [{"label": "wrong id of menu"}], "right": []}',
+				  ];
 	    }
 	}
 }
