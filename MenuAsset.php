@@ -3,12 +3,12 @@ namespace pceuropa\menu;
 
 use yii\web\AssetBundle;
 
-class MenuAsset extends AssetBundle
-{
-    public $sourcePath = __DIR__ . '/assets';
+class MenuAsset extends AssetBundle{
+    public $sourcePath = '@vendor/pceuropa/yii2-menu/assets';
     public $baseUrl = '@web';
     public $js = [
         'js/Sortable.min.js',
+        'js/menu.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
