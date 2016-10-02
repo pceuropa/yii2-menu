@@ -59,7 +59,6 @@ echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-right'],
 NavBar::end();
 
 ```
-
 ### 3. Getting started
 example.com/menu/creator
 
