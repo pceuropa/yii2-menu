@@ -13,7 +13,7 @@ class Search extends Model {
      */
     public function rules(){
         return [
-            [['id'], 'integer'],
+            [['menu_id'], 'integer'],
             [['menu'], 'string'],
         ];
     }
@@ -36,7 +36,7 @@ class Search extends Model {
         }
 
         $query->andFilterWhere([
-            'id' => $this->id,
+            'menu_id' => $this->menuId,
         ]);
 
         $query->andFilterWhere(['like', 'menu', $this->menu]);

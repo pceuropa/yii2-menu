@@ -10,7 +10,7 @@ echo  GridView::widget([
 	'filterModel' => $searchModel,
 	'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
-				'id',
+				'menu_id',
 			['class' => 'yii\grid\ActionColumn',],
 	],
 ]); 

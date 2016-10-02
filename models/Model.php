@@ -11,14 +11,14 @@ class Model extends \yii\db\ActiveRecord {
 
 	public function rules(){
 		return [
-			[['id'], 'integer'],
+			[['menu_id'], 'integer'],
 			[['menu'], 'string'],
 		];
 	}
 
 	public function attributeLabels(){
 		return [
-			'id' => Yii::t('app', 'Id'),
+			'menu_id' => Yii::t('app', 'Id'),
 			'menu' => Yii::t('app', 'Menu'),
 		];
 	}
