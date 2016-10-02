@@ -1,6 +1,6 @@
 <?php
 pceuropa\menu\MenuAsset::register($this);
-$this->title = Yii::t('app', 'Menu');
+$this->title = Yii::t('app', 'Create');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Menu'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 

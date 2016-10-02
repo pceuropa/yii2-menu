@@ -2,7 +2,7 @@ Bootstrap menu menager for Yii2
 ============================
 
 [![Latest Stable Version](https://poser.pugx.org/pceuropa/yii2-menu/v/stable)](https://packagist.org/packages/pceuropa/yii2-menu) [![Total Downloads](https://poser.pugx.org/pceuropa/yii2-menu/downloads)](https://packagist.org/packages/pceuropa/yii2-menu) [![Latest Unstable Version](https://poser.pugx.org/pceuropa/yii2-menu/v/unstable)](https://packagist.org/packages/pceuropa/yii2-menu) [![License](https://poser.pugx.org/pceuropa/yii2-menu/license)](https://packagist.org/packages/pceuropa/yii2-menu)
-![preview](http://pceuropa.net/imgs/yii2-menu2.png)
+![preview](http://pceuropa.net/imgs/yii2-menu.png)
 
 [DEMO](http://yii2-menu.pceuropa.net/menu)
 
@@ -22,7 +22,7 @@ Add the following code to config file Yii2
 ```php
 'modules' => [
 	'menu' => [
-            'class' => '\pceuropa\menu\Module',
+            'class' => '\pceuropa\menu\Menu',
         ],
 	]
 ```
@@ -43,39 +43,18 @@ $ php yii migrate/up --migrationPath=@vendor/pceuropa/yii2-menu/migrations
 ### 2. Add the following code to config file Yii2
 ```php
 
-$menu = new pceuropa\menu\Module([]);
+use pceuropa\menu\Menu;
 
 NavBar::begin(['brandLabel' => 'Brand','brandUrl' => Url::home(),]);
 
 echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-left'],
-					'items' => $menu->Left() 
+					'items' => Menu::NavbarLeft(1)  // argument is id of menu
 				]);	
 					
 echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-right'],
-					'items' => $menu->Right()
+					'items' => Menu::NavbarRight(1)
 				]);
 NavBar::end();
 
 ```
 
-### 3. Several menus
-If you need second menu:
-You need to create second database (ex menu_fr). Find this code in pceuropa/models
-```php
-public static function tableName() { 
-	return 'menu'; 
-}
-```
-and chagne for it
-
-```php
-public static function tableName() { 
-	if Yii:$app->language == "en" {
-		return 'menu'; 
-	} else {
-	 	return "menu_fr"
-	}
-	
-}
-```
-Author: [@Marguzewicz](https://twitter.com/Marguzewicz) | [Donation](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=patriota%40or7%2eeu&lc=PL&item_name=Rafal%20Marguzewicz&no_note=1&no_shipping=1&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
