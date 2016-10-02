@@ -5,10 +5,13 @@
 -- Server version: 10.1.17-MariaDB-1~xenial
 -- PHP Version: 7.0.8-0ubuntu0.16.04.2
 
-CREATE TABLE `menu` (
-  `menu_id` int(11) NOT NULL AUTO_INCREMENT,
-  `menu` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-ALTER TABLE `menu` ADD PRIMARY KEY (`menu_id`);
-ALTER TABLE `menu` MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT;
+CREATE TABLE IF NOT EXISTS `menu` (
+`id` int(11) NOT NULL,
+  `menu` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+ALTER TABLE `menu` ADD PRIMARY KEY (`id`);
+ALTER TABLE `menu` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
