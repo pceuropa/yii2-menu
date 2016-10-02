@@ -6,7 +6,7 @@ Bootstrap Menu Builder for Yii2
 
 ![preview](http://pceuropa.net/imgs/yii2-menu.png)
 
-[DEMO](http://yii2-menu.pceuropa.net/menu)
+[DEMO](http://yii2-menu.pceuropa.net/menu/creator/)
 
 ## Features
 
