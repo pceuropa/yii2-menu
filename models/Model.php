@@ -24,7 +24,7 @@ class Model extends \yii\db\ActiveRecord {
 	}
 	public function findModel($id){
 ;
-	    if (($model = Model::find()->where(['menu_id' => 1])->one()) !== null) {
+	    if (($model = Model::find()->where(['menu_id' => $id])->one()) !== null) {
 	        return $model;
 	    } else {
 	        return (object) [
