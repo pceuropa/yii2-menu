@@ -22,4 +22,14 @@ class Model extends \yii\db\ActiveRecord {
 			'menu' => Yii::t('app', 'Menu'),
 		];
 	}
+	public function findModel($id){
+;
+	    if (($model = Model::find()->where(['menu_id' => 1])->one()) !== null) {
+	        return $model;
+	    } else {
+	        return (object) [
+					'menu' => '{"left" : [{"label": "wrong id of menu"}], "right": []}',
+				  ];
+	    }
+	}
 }
