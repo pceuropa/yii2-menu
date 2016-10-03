@@ -9,10 +9,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
 NavBar::begin();
 echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-left'],
-					'items' => Menu::NavbarLeft($model->id) ]);
+					'items' => Menu::NavbarLeft($model->menu_id) ]);
 
 echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-right'],
-					'items' => Menu::NavbarRight($model->id)]);		
+					'items' => Menu::NavbarRight($model->menu_id)]);		
 NavBar::end();			
 
 ?>
