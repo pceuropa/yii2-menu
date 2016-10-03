@@ -39,7 +39,7 @@ class CreatorController extends \yii\web\Controller {
 	}
 
 	public function actionView($id){
-		$m = $this->findMenu($id);
+		$m = Model::findModel($id);
 		$r = Yii::$app->request;
 	
 		 if ($r->isAjax) {
@@ -55,7 +55,7 @@ class CreatorController extends \yii\web\Controller {
 	}
 
 	public function actionUpdate($id){
-		$m = $this->findMenu($id);
+		$m = Model::findModel($id);
 		$r = Yii::$app->request;
 	
 		 if ($r->isAjax) {
@@ -78,12 +78,5 @@ class CreatorController extends \yii\web\Controller {
 		return $this->redirect(Yii::$app->request->referrer);
 	}
 
-	protected function findMenu($id){
-		if (($m = Model::findOne($id)) !== null) {
-			return $m;
-		} else {
-			throw new NotFoundHttpException('The requested page does not exist.');
-		}
-	}
 
 }

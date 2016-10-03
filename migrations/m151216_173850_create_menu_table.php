@@ -9,7 +9,7 @@ class m151216_173850_create_menu_table extends Migration
     {
 		$this->createTable('menu', [
             'menu_id' => $this->primaryKey(),
-            'menu' => $this->string()->notNull(),
+            'menu' => $this->text()->notNull(),
         ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1');
     }
 
