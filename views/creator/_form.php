@@ -1,3 +1,6 @@
+<?php // $this->registerJsFile('@web/js/menu/menu.js', ['depends' => 'yii\web\YiiAsset']);?>
+
+
 <div id="inputsData" class="col-md-6 form-horizontal">
 	<h4>Add element</h4>
 

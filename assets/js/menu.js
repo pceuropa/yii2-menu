@@ -21,6 +21,7 @@ function Menu(o) {
 
 Menu.prototype = {
 	version: '2.0.0',
+	operations: 0,
 	locSelector: $("#location"),
 	init: function () {
 		var menu = this;
@@ -83,38 +84,47 @@ Menu.prototype = {
 	
 		var menu = this, action = action || 'get', data = {}, fn;
 		
-		if(action == 'get'){
+		if(action == 'get' ){
 			if(!this.config.getMysql){return false;}
-			
-			data = {get: true, _csrf : menu.csrfToken};
-			fn = function (resp) {
-				menu.navbar = JSON.parse(resp.menu);
-				console.log('upload from base correct');
+
+			$.getJSON( document.URL, function( data ) {
+			 	menu.navbar = JSON.parse(data.menu);
 				menu.render();
-			};
-		} else {
-			data = {update: true, _csrf : menu.csrfToken, menu: JSON.stringify(menu.navbar, null, 4) };
-			fn = function (resp) {
-				console.log('save from base correct');	
-				if (resp.url) {
-					window.location.href = resp.url;
-				}
-			};
-		}
 		
-		$.ajax({
+			});
+			
+		} else {
+
+			if(this.operations == 0){
+				menu.operations++;
+				return false;
+			}
+			
+			$.ajax({
 				url: document.URL,
 				type: 'post',
-				data: data,
+				dataType:'JSON',
+				data: { update: true, _csrf : menu.csrfToken, menu: JSON.stringify(menu.navbar, null, 4) },
 				dataType: 'json',		
-				success: function (response) {
-						if (response.success === false) {console.log(response.message);}
-						if (response.success === true) {fn(response);}
+				success: function (r) {
+						if (r.success === false) {console.log(r.message);}
+						if (r.success === true) { 
+
+								console.log(menu.operations +'. save from base correct');
+								menu.operations++;
+								
+								if (r.url) {
+									window.location.href = r.url;
+								}
+						}
 					},
 				error: function (XMLHttpRequest, textStatus, errorThrown) {
 					alert(textStatus);
 				}
-		});
+			});
+		}
+		
+		
 	},
 
 	filterMenu: function () {

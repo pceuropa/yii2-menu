@@ -62,7 +62,7 @@ class CreatorController extends \yii\web\Controller {
 			\Yii::$app->response->format = Response::FORMAT_JSON;
 
 			switch (true) {
-				case $r->post('get'): return ['success' => true, 'menu' => $m->menu];
+				case $r->isGet : return ['success' => true, 'menu' => $m->menu];
 				case $r->post('update'): 
 					$m->menu = $r->post('menu');
 					return $m->save() ? ['success' => true] : ['success' => false]; 

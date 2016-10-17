@@ -23,7 +23,6 @@ class Model extends \yii\db\ActiveRecord {
 		];
 	}
 	public function findModel($id){
-;
 	    if (($model = Model::find()->where(['menu_id' => $id])->one()) !== null) {
 	        return $model;
 	    } else {
