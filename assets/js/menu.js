@@ -57,6 +57,8 @@ Menu.prototype = {
 
 		$("#add").click(function(){
 			var o = menu.sourceElement();
+			console.log(o);
+			
 			menu.addToMenu(o);
 		});
 	},
@@ -76,7 +78,6 @@ Menu.prototype = {
 			case 'line': this.navbar[o.side][o.location[1]].items.push("<li class='divider'></li>");  break;
 			default: console.log('error side');
 		} 
-		
 		
 		this.render();
 	},
@@ -127,30 +128,35 @@ Menu.prototype = {
 		
 	},
 
-	filterMenu: function () {
+	filter: function () {
 		var menu = this;
-	console.log('filter');
-		
-				function wrongElements(element, index, array) {
-					return (element !== menu.config.prefixDelete && element.label);
-				};
 
-				function cleanFromLine(element, index, array) {
-						return element !== "<li class='divider'></li>";
-				};
+				function del(el) {
+					return el !== menu.config.prefixDelete;
+				}
+					
+				function line(el) {
+					return el !== "<li class='divider'></li>";
+				}
+				
+				function label(el) {
+					return el.label !== undefined || typeof el === "string" ;
+				}
 
-		this.navbar.left = this.navbar.left.filter(wrongElements).filter(cleanFromLine);
-		this.navbar.right = this.navbar.right.filter(wrongElements).filter(cleanFromLine);
+				
+
+		this.navbar.left = this.navbar.left.filter(del).filter(line).filter(label);
+		this.navbar.right = this.navbar.right.filter(del).filter(line).filter(label);
 
 		for (var i = this.navbar.left.length; i--;) {
 			if (this.navbar.left[i].hasOwnProperty('items')){
-				this.navbar.left[i].items = this.navbar.left[i].items.filter(cleanFromDelete)
+				this.navbar.left[i].items = this.navbar.left[i].items.filter(del).filter(label)
 			}
 		}
 		
 		for (var i = this.navbar.right.length; i--;) {
 			if (this.navbar.right[i].hasOwnProperty('items')){
-				this.navbar.right[i].items = this.navbar.right[i].items.filter(cleanFromDelete)
+				this.navbar.right[i].items = this.navbar.right[i].items.filter(del).filter(label)
 			}
 		}
 		
@@ -158,7 +164,8 @@ Menu.prototype = {
 	
 	render: function () {
 		console.log('render');
-		this.filterMenu();
+		this.filter();
+
 		$("#left").html(this.renderNavbar('left'));
 		$("#right").html(this.renderNavbar('right'));
 		this.locSelector.html(this.locations());
