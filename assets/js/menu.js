@@ -20,7 +20,7 @@ function Menu(o) {
 }; 
 
 Menu.prototype = {
-	version: '2.0.0',
+	version: '2.0.5',
 	operations: 0,
 	locSelector: $("#location"),
 	init: function () {
@@ -129,17 +129,18 @@ Menu.prototype = {
 
 	filterMenu: function () {
 		var menu = this;
+	console.log('filter');
 		
-				function cleanFromDelete(element, index, array) {
-					return (element !== menu.config.prefixDelete);
+				function wrongElements(element, index, array) {
+					return (element !== menu.config.prefixDelete && element.label);
 				};
 
 				function cleanFromLine(element, index, array) {
 						return element !== "<li class='divider'></li>";
 				};
 
-		this.navbar.left = this.navbar.left.filter(cleanFromDelete).filter(cleanFromLine);
-		this.navbar.right = this.navbar.right.filter(cleanFromDelete).filter(cleanFromLine);
+		this.navbar.left = this.navbar.left.filter(wrongElements).filter(cleanFromLine);
+		this.navbar.right = this.navbar.right.filter(wrongElements).filter(cleanFromLine);
 
 		for (var i = this.navbar.left.length; i--;) {
 			if (this.navbar.left[i].hasOwnProperty('items')){
