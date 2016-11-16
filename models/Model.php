@@ -22,7 +22,7 @@ class Model extends \yii\db\ActiveRecord {
 			'menu' => Yii::t('app', 'Menu'),
 		];
 	}
-	public function findModel($id){
+	public static function findModel($id){
 	    if (($model = Model::find()->where(['menu_id' => $id])->one()) !== null) {
 	        return $model;
 	    } else {
