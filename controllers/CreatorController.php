@@ -55,7 +55,7 @@ class CreatorController extends \yii\web\Controller {
 	}
 
 	public function actionUpdate($id){
-		$m = Model::findModel($id);
+		$m = $this->findModel($id);
 		$r = Yii::$app->request;
 	
 		 if ($r->isAjax) {
@@ -74,9 +74,19 @@ class CreatorController extends \yii\web\Controller {
 	}
 
 	public function actionDelete($id){
-		$this->findMenu($id)->delete();
+		$this->findModel($id)->delete();
 		return $this->redirect(Yii::$app->request->referrer);
 	}
+    
+    protected function findModel($id){
+	    if (($model = Model::findOne($id)) !== null) {
+		    return $model;
+	    } else {
+		    throw new NotFoundHttpException('The requested menu does not exist.');
+	    }
+    }
+
+
 
 
 }
