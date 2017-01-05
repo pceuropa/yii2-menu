@@ -4,9 +4,9 @@ Bootstrap Menu Builder for Yii2
 ============================
 
 
-![preview](http://pceuropa.net/imgs/yii2-menu.png)
+![preview](http://pceuropa.net/images/yii2-menu.png)
 
-[DEMO](http://yii2-menu.pceuropa.net/menu/creator/)
+[DEMO](https://pceuropa.net/menu/creator)
 
 ## Features
 
@@ -33,8 +33,7 @@ Add the following code to config file Yii2
 
 ### 1. Create database schema
 
-Make sure that you have properly configured `db` application component
-and run the following command:
+Make sure that you have properly configured `db` application component and run the following command:
 
 ```bash
 $ php yii migrate/up --migrationPath=@vendor/pceuropa/yii2-menu/migrations
@@ -60,5 +59,5 @@ NavBar::end();
 
 ```
 ### 3. Getting started
-example.com/menu/creator
+/menu/creator
 

@@ -9,8 +9,8 @@
 		"drag end drop",
 		"bootstrap menu"
 	],
-	"version": "2.0.6",
-	"homepage": "https://github.com/pceuropa/yii2-menu",
+	"version": "2.0.7",
+	"homepage": "https://pceuropa.net/yii2-extensions/yii2-menu",
 	"type": "yii2-extension",
 	"license": "MIT",
 	"minimum-stability": "dev",
@@ -18,7 +18,7 @@
 		{
 		  "name": "Rafal Marguzewicz",
 		  "email": "info@pceuropa.net",
-		  "homepage": "https://yii2-menu.pceuropa.net/"
+		  "homepage": "https://pceuropa.net/"
 		}
 	],
 	"autoload": {
