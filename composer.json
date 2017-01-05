@@ -1,6 +1,6 @@
 {
 	"name": "pceuropa/yii2-menu",
-	"description": "Menu bootstrap creator/builder. Sort by drag and drop",
+	"description": "Menu bootstrap builder. Sort by drag and drop",
 	"keywords": [
 		"yii2",
 		"extension",
