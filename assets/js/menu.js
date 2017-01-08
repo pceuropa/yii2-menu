@@ -1,5 +1,7 @@
 "use strict";
 
+//Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net LTD
+
 var MyMENU =  MyMENU || {};
 MyMENU = (function(){ 
 

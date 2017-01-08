@@ -1,5 +1,6 @@
 <?php
 namespace pceuropa\menu;
+#Copyright (c) 2017 Rafal Marguzewicz pceuropa.net LTD
 
 use Yii;
 use yii\helpers\Json;

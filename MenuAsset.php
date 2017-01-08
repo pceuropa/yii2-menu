@@ -1,6 +1,6 @@
 <?php 
 namespace pceuropa\menu;
-
+#Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net LTD
 use yii\web\AssetBundle;
 
 class MenuAsset extends AssetBundle{

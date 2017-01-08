@@ -1,5 +1,5 @@
 <?php namespace pceuropa\menu\controllers;
-
+#Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net LTD
 use Yii;
 use yii\web\Response;
 use yii\helpers\Url;

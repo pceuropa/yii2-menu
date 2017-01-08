@@ -1,4 +1,5 @@
 <?php
+#Copyright (c) 2017 Rafal Marguzewicz pceuropa.net LTD
     $this->registerCss('
 	#left, #right {min-width:20px; min-height:50px;border: solid 1px #DCD8D8}
 	.navbar-nav > li > .dropdown-menu { min-height: 30px;}

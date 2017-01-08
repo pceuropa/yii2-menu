@@ -1,4 +1,6 @@
 <?php
+#Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net LTD
+
 namespace pceuropa\menu;
 use yii\base\Widget;
 

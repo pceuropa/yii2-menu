@@ -1,4 +1,5 @@
 <?php
+#Copyright (c) 2017 Rafal Marguzewicz pceuropa.net LTD
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use pceuropa\menu\Menu;

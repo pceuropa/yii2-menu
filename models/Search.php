@@ -1,6 +1,8 @@
 <?php
 namespace pceuropa\menu\models;
 
+#Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net LTD
+
 use Yii;
 use yii\data\ActiveDataProvider;
 use pceuropa\menu\models\Model;

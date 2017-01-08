@@ -1,6 +1,8 @@
 <?php 
 namespace pceuropa\menu\models;
 
+#Copyright (c) 2017 Rafal Marguzewicz pceuropa.net LTD
+
 use Yii;
 class Model extends \yii\db\ActiveRecord {
 
