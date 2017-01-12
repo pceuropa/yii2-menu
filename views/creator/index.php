@@ -1,5 +1,6 @@
 <?php
 #Copyright (c) 2017 Rafal Marguzewicz pceuropa.net LTD
+use pceuropa\menu\Menu;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -11,7 +12,12 @@ echo  GridView::widget([
 	'filterModel' => $searchModel,
 	'columns' => [
 			['class' => 'yii\grid\SerialColumn'],
-				'menu_id',
+			[
+				'attribute' => 'menu_name',
+				'value' => function($model) {
+					return sprintf("(#%s) %s", $model->menu_id, $model->menu_name);
+				}
+			],
 			['class' => 'yii\grid\ActionColumn',],
 	],
 ]); 

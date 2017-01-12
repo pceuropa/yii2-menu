@@ -8,6 +8,8 @@ $this->title = Yii::t('app', 'View');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Menu'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
+echo \yii\bootstrap\Html::tag('h1', $model->menu_name);
+
 NavBar::begin();
 echo Nav::widget([ 'options' => ['class' => 'navbar-nav navbar-left'],
 					'items' => Menu::NavbarLeft($model->menu_id) ]);

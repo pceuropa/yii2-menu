@@ -28,14 +28,12 @@ class CreatorController extends \yii\web\Controller {
 
 	public function actionCreate(){
 		$m = new Model();
-		$r = Yii::$app->request;
-	
-		 if ($r->isAjax) {
-			$m->menu = $r->post('menu');
-			\Yii::$app->response->format = Response::FORMAT_JSON;
-			return ['success' => $m->save(), 'url' => Url::to(['index'])];
-		} else {
-			return $this->render('create');}
+
+        if ($m->load(Yii::$app->request->post()) && $m->save())
+        {
+            return $this->redirect(['update', 'id' => $m->menu_id]);
+        }
+        return $this->render('create', ['model' => $m]);
 	}
 
 	public function actionView($id){
