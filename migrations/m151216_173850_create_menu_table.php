@@ -7,10 +7,15 @@ class m151216_173850_create_menu_table extends Migration
 {
     public function up()
     {
-		$this->createTable('menu', [
+	$options = null;
+        if ($this->db->driverName === 'mysql')
+        {
+            $options = 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1';
+        }
+	$this->createTable('menu', [
             'menu_id' => $this->primaryKey(),
             'menu' => $this->text()->notNull(),
-        ], 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1');
+        ], $options);
     }
 
     public function down()
