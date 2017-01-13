@@ -4,6 +4,14 @@
 
 use yii\bootstrap\BaseHtml;
 use \pceuropa\menu\models\Model;
+$glyphicons = \pceuropa\menu\icons\Glyphicons::forge()->getAll();
+$glyphicons = json_encode($glyphicons);
+$this->registerJs(
+    "
+    window.glyphicons = {$glyphicons};
+    ",
+    \yii\web\View::POS_HEAD);
+
 ?>
 
 
@@ -21,6 +29,21 @@ use \pceuropa\menu\models\Model;
 			); ?>
 		</div>
 	</div>
+
+    <div class="form-group">
+        <label for="icon" class="col-sm-3 control-label">Icon</label>
+        <div class="col-sm-7">
+            <?= \kartik\select2\Select2::widget([
+                'name' => 'icon',
+                'data' => \pceuropa\menu\icons\Glyphicons::forge()->getDropDownOptions(),
+                'options' => ['placeholder' => 'Select an icon ...', 'id' => 'icon'],
+                'pluginOptions' => [
+                    'escapeMarkup' => new \yii\web\JsExpression("function(m) { return m; }"),
+                    'allowClear' =>  true
+                ],
+            ]); ?>
+        </div>
+    </div>
 
 	<div id="location-box" class="form-group">
 	<label class="col-sm-3 control-label">Location</label>
