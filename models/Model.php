@@ -33,7 +33,7 @@ class Model extends \yii\db\ActiveRecord {
 		];
 	}
 	public static function findModel($id){
-        if (is_int($id)) {
+        if (preg_match('#\d+#', $id)) {
             $where = ['menu_id' => $id];
         }
         else {
