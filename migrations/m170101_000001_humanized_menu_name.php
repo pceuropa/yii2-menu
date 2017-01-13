@@ -3,7 +3,7 @@
 use yii\db\Schema;
 use yii\db\Migration;
 
-class m120117_223000_humanized_menu_name extends Migration
+class m170101_000001_humanized_menu_name extends Migration
 {
     protected $newColumnName = 'menu_name';
 
