@@ -29,7 +29,7 @@ MyMENU = (function(){
             var menu = this;
 
             $('#type').on( 'change', function (){
-                var divs = $('#url-box, #anchor-box')
+                var divs = $('#url-box, #anchor-box, #icon-box')
                 menu.locSelector.empty().append(menu.locations());
                 divs.show();
 

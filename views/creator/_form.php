@@ -30,7 +30,7 @@ $this->registerJs(
 		</div>
 	</div>
 
-    <div class="form-group">
+    <div class="form-group" id="icon-box">
         <label for="icon" class="col-sm-3 control-label">Icon</label>
         <div class="col-sm-7">
             <?= \kartik\select2\Select2::widget([
