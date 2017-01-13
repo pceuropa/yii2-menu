@@ -108,7 +108,6 @@ Menu.prototype = {
 				type: 'post',
 				dataType:'JSON',
 				data: { update: true, _csrf : menu.csrfToken, menu: JSON.stringify(menu.navbar, null, 4) },
-				dataType: 'json',		
 				success: function (r) {
 						if (r.success === false) {console.log(r.message);}
 						if (r.success === true) { 
