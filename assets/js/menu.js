@@ -391,7 +391,6 @@ MyMENU = (function(){
                             gr = evt.from.id,
                             side = menu.sideNav(gr),
                             index = evt.oldIndex,
-                            html = '',
                             editDiv = $("#edit"),
                             formAndTrashDiv = $("#inputsData, #trash"),
                             valueAttr = function (val) {
@@ -408,9 +407,14 @@ MyMENU = (function(){
                         // window.console && console.log({gr: evt.from.id, index: evt.oldIndex}); // preview data do test
 
                         $('.pceuropa-dropmenu').click();
-                        editDiv.attr('class', 'col-md-8 form-horizontal well');
-
                         o = (gr == 'left' || gr == 'right') ? menu.navbar[gr][index] : menu.navbar[side][gr[1]].items[index];
+
+                        if (o.type == 'line')
+                        {
+                            return;
+                        }
+
+                        editDiv.attr('class', 'col-md-8 form-horizontal well');
 
                         editDiv.append(
                             wrapItem(
@@ -450,11 +454,12 @@ MyMENU = (function(){
                         formAndTrashDiv.hide();
 
                         $("#btnUpdate").click(function(){
-                            if (o.hasOwnProperty('label'))
+                            if (o.type != 'line')
                             {
                                 o.label = $("#label-update").val();
                                 $("#url-update").val() ? o.url = $("#url-update").val() : null;
                             }
+
                             formAndTrashDiv.show();
                             editDiv.attr('class', 'col-md-2 well').html('Drop here to edit');
                             menu.render();
