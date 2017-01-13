@@ -21,6 +21,9 @@
 		  "homepage": "https://pceuropa.net/"
 		}
 	],
+	"requires" : {
+		"kartik-v/yii2-widget-select2": "@dev"
+	},
 	"autoload": {
 		"psr-4": {
 		  "pceuropa\\menu\\": ""

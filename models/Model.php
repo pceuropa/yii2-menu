@@ -6,6 +6,12 @@ namespace pceuropa\menu\models;
 use Yii;
 class Model extends \yii\db\ActiveRecord {
 
+    public static $availableMenuTypes = [
+        'link' => 'Link',
+        'dropmenu' => 'Dropdown menu',
+        'line' => 'Line (devider)'
+    ];
+
 	public static function tableName() { 
 		return 'menu';
 	}
@@ -14,18 +20,30 @@ class Model extends \yii\db\ActiveRecord {
 	public function rules(){
 		return [
 			[['menu_id'], 'integer'],
+            [['menu_name'], 'safe'],
 			[['menu'], 'string'],
+            ['menu', 'default', 'value' => json_encode(['left' => [], 'right' => []]), 'on' => 'insert'],
 		];
 	}
 
 	public function attributeLabels(){
 		return [
 			'menu_id' => Yii::t('app', 'Id'),
+            'menu_name' => Yii::t('app', 'Menu name'),
 			'menu' => Yii::t('app', 'Menu'),
 		];
 	}
 	public static function findModel($id){
-	    if (($model = Model::find()->where(['menu_id' => $id])->one()) !== null) {
+        if (preg_match('#\d+#', $id)) {
+            $where = ['menu_id' => $id];
+        }
+        else {
+            $where = ['like', 'lower(menu_name)', $id];
+        }
+
+        $model = Model::find()->where($where)->one();
+
+	    if ($model !== null) {
 	        return $model;
 	    } else {
 	        return (object) [
