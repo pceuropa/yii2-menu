@@ -17,7 +17,7 @@ Bootstrap Menu Builder for Yii2
  
 ## Installation
 ```
-composer require pceuropa/yii2-menu dev-master
+composer require pceuropa/yii2-menu "2.0.7"
 ```
 
 Add the following code to config file Yii2
