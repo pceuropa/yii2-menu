@@ -22,6 +22,7 @@ class Model extends \yii\db\ActiveRecord {
 			[['menu_id'], 'integer'],
             [['menu_name'], 'safe'],
 			[['menu'], 'string'],
+            ['menu', 'default', 'value' => json_encode(['left' => [], 'right' => []]), 'on' => 'insert'],
 		];
 	}
 

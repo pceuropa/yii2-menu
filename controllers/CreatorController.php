@@ -29,8 +29,10 @@ class CreatorController extends \yii\web\Controller {
 	public function actionCreate(){
 		$m = new Model();
 
-        if ($m->load(Yii::$app->request->post()) && $m->save())
+        if ($m->load(Yii::$app->request->post()))
         {
+            $m->scenario = 'insert';
+            $m->save();
             return $this->redirect(['update', 'id' => $m->menu_id]);
         }
         return $this->render('create', ['model' => $m]);
