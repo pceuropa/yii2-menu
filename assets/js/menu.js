@@ -275,9 +275,9 @@ MyMENU = (function(){
                     .attr('draggable', 'false')
                     .attr('aria-expanded', 'false')
                     .text(o.label)
+                    .prepend(this.icon(o.icon))
                     .append($('<span />').addClass('caret'))
             );
-            el.append(this.icon(o.icon));
 
             el.append(links);
             return el;
