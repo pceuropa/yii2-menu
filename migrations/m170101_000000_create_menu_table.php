@@ -15,7 +15,7 @@ class m170101_000000_create_menu_table extends Migration
             $options = 'ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1';
         }
         
-	$this->createTable($table, [
+	$this->createTable($this->table, [
             'menu_id' => $this->primaryKey(),
             'menu' => $this->text()->notNull(),
         ], $options);
@@ -23,7 +23,7 @@ class m170101_000000_create_menu_table extends Migration
 
     public function down(){
     
-        $this->dropTable($table);
+        $this->dropTable($this->table);
     }
 
     /*
