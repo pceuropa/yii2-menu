@@ -15,8 +15,7 @@ class Menu extends \yii\base\Module {
 		parent::init();	  // custom initialization code goes here
 	}
 	
-    public static function NavbarLeft($id)
-    {
+    public static function NavbarLeft($id){
 		return self::processNavbar($id, 'left');
 	}
 
@@ -29,18 +28,17 @@ class Menu extends \yii\base\Module {
         $m = Model::findModel($id);
         $m = Json::decode($m->menu);
 
-        $data = self::checkIcon($m[$pos]);
+        //$data = self::checkIcon($m[$pos]);
 
-        return $data;
+        return $m[$pos];
     }
 
-    protected static function checkIcon($array)
-    {
+    protected static function checkIcon($array){
         $result = [];
-        foreach ($array as $item)
-        {
-            if (array_key_exists('icon', $item))
-            {
+        foreach ($array as $item){
+        
+            if (array_key_exists('icon', $item)){
+            
                 $glyph = Html::tag('i', '',
                     ['class' => sprintf("glyphicon glyphicon-%s", $item['icon'])]
                 );
@@ -48,8 +46,8 @@ class Menu extends \yii\base\Module {
                 $item['label'] = sprintf('%s %s', $glyph, $item['label']);
             }
 
-            if (array_key_exists('items', $item))
-            {
+            if (array_key_exists('items', $item)){
+            
                 $item['items'] = self::checkIcon($item['items']);
             }
 
