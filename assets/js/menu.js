@@ -18,19 +18,19 @@ MyMENU = (function(){
         };
         this.navbar = this.mysql('get') || this.navbar;
         this.init();
-        //this.test(); // uncomment to use function adds items and change locations
+        // this.test(); // uncomment to use function test example, with only this.config.getMysql false
     };
 
     Menu.prototype = {
-        version: '2.0.5',
+        version: '2.1.3',
         operations: 0,
-        locSelector: $("#location"),
+        location_selector: $("#location"),
         init: function () {
             var menu = this;
 
             $('#type').on( 'change', function (){
                 var divs = $('#url-box, #anchor-box, #icon-box')
-                menu.locSelector.empty().append(menu.locations());
+                menu.location_selector.empty().append(menu.locations());
                 divs.show();
 
                 switch(true) {
@@ -45,8 +45,8 @@ MyMENU = (function(){
                 }
             });
 
-            menu.locSelector.on( 'change', function (){
-                var selector = '#' +$(this).val();
+            menu.location_selector.on( 'change', function (){
+                var selector = '#' + $(this).val();
                 $(selector).css({border: '0 solid #f37736'})
                     .animate({ borderWidth: 1,}, 3000, 'swing', function () {
                         $(selector).animate({ borderWidth: 0 }, 1000);
@@ -59,21 +59,21 @@ MyMENU = (function(){
 
             $("#add").click(function(){
                 var o = menu.sourceElement();
-                window.console && console.log(o);
 
                 menu.addToMenu(o);
             });
         },
         addToMenu: function (o) {
-            var o = o || {type: 'link', location: 'left', label: 'error', url: '/menu/index', icon: ''};
+            var o = o || {type: 'link', location: 'left', label: 'error', url: '/menu/index', icon: ''}, data = {};
             o.side = this.sideNav(o.location);
 
             switch(o.type) {
                 case 'link':
+                	data = {'label': o.label, 'url': o.url, 'icon': o.icon, 'type' : 'link'}
                     if(o.location == 'left' || o.location == 'right'){
-                        this.navbar[o.location].push({'label': o.label, 'url': o.url, 'icon': o.icon, 'type' : 'link'});
+                        this.navbar[o.location].push(data);
                     } else {
-                        this.navbar[o.side][o.location[1]].items.push({'label': o.label, 'url': o.url, 'icon': o.icon, 'type' : 'link'});
+                        this.navbar[o.side][o.location[1]].items.push(data);
                     }
                     break;
                 case 'dropmenu':  this.navbar[o.location].push({'label': o.label, 'items': [], 'icon': o.icon, type : 'dropmenu'}); break;
@@ -113,12 +113,10 @@ MyMENU = (function(){
                         if (r.success === false) {window.console && console.log(r.message);}
                         if (r.success === true) {
 
-                            window.console && console.log(menu.operations +'. save from base correct');
+                            window.console && console.log(menu.operations +'. save correct');
+                            menu.afterSuccessSave();
                             menu.operations++;
 
-                            if (r.url) {
-                                window.location.href = r.url;
-                            }
                         }
                     },
                     error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -129,7 +127,19 @@ MyMENU = (function(){
 
 
         },
-
+		
+		afterSuccessSave: function () {
+			var add = $("#add"), html = add.html();
+			
+			window.setTimeout(function() {
+			  	add.prop('disabled', true ).text('Menu saved correctly');
+			  }, 111)
+		
+			window.setTimeout(function() {
+			  	add.prop('disabled', false ).html(html);
+			  }, 1111)
+		},
+	
         filter: function () {
             var menu = this;
 
@@ -168,7 +178,9 @@ MyMENU = (function(){
 
             $("#left").empty().append(this.renderNavbar('left'));
             $("#right").empty().append(this.renderNavbar('right'));
-            this.locSelector.empty().append(this.locations());
+            console.log(this.locations());
+            
+            this.location_selector.empty().append(this.locations());
             this.sort();
 
             if(this.config.setMysql){

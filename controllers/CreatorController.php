@@ -29,10 +29,10 @@ class CreatorController extends \yii\web\Controller {
 	public function actionCreate(){
 		$m = new Model();
 
-        if ($m->load(Yii::$app->request->post()))
-        {
-            $m->scenario = 'insert';
-            $m->save();
+        if ( $m->load(Yii::$app->request->post())){
+        
+        	$m->scenario = 'insert';
+        	$m->save();
             return $this->redirect(['update', 'id' => $m->menu_id]);
         }
         return $this->render('create', ['model' => $m]);
@@ -46,8 +46,10 @@ class CreatorController extends \yii\web\Controller {
 			\Yii::$app->response->format = Response::FORMAT_JSON;
 
 			switch (true) {
-				case $r->post('get'): return ['success' => true, 'menu' => $m->menu];
-				default: return ['success' => false];
+				case $r->post('get'): 
+					return ['success' => true, 'menu' => $m->menu];
+				default: 
+					return ['success' => false];
 			}
 		}
 
@@ -62,10 +64,12 @@ class CreatorController extends \yii\web\Controller {
 			\Yii::$app->response->format = Response::FORMAT_JSON;
 
 			switch (true) {
-				case $r->isGet : return ['success' => true, 'menu' => $m->menu];
+				case $r->isGet: 
+					return ['success' => true, 'menu' => $m->menu];
 				case $r->post('update'): 
 					$m->menu = $r->post('menu');
-					return $m->save() ? ['success' => true] : ['success' => false]; 
+					return  ['success' => $m->save()]; 
+					
 				default: return ['success' => false];
 			}
 		}

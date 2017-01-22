@@ -20,8 +20,7 @@ class Model extends \yii\db\ActiveRecord {
 	public function rules(){
 		return [
 			[['menu_id'], 'integer'],
-            [['menu_name'], 'safe'],
-			[['menu'], 'string'],
+			[['menu', 'menu_name'], 'string'],
             ['menu', 'default', 'value' => json_encode(['left' => [], 'right' => []]), 'on' => 'insert'],
 		];
 	}
@@ -33,22 +32,16 @@ class Model extends \yii\db\ActiveRecord {
 			'menu' => Yii::t('app', 'Menu'),
 		];
 	}
+	
 	public static function findModel($id){
-        if (preg_match('#\d+#', $id)) {
-            $where = ['menu_id' => $id];
-        }
-        else {
-            $where = ['like', 'lower(menu_name)', $id];
-        }
-
+        
+    	$where = (preg_match('#\d+#', $id)) ? ['menu_id' => $id] : ['like', 'lower(menu_name)', $id];
         $model = Model::find()->where($where)->one();
 
 	    if ($model !== null) {
 	        return $model;
 	    } else {
-	        return (object) [
-					'menu' => '{"left" : [{"label": "wrong id of menu"}], "right": []}',
-				  ];
+	        return (object) [ 'menu' => '{"left" : [{"label": "wrong id of menu"}], "right": []}', ];
 	    }
 	}
 }
