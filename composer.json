@@ -9,7 +9,7 @@
 		"drag end drop",
 		"bootstrap menu"
 	],
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"homepage": "https://pceuropa.net/yii2-extensions/yii2-menu",
 	"type": "yii2-extension",
 	"license": "MIT",
