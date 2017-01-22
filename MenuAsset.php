@@ -1,14 +1,13 @@
 <?php 
 namespace pceuropa\menu;
-#Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net LTD
-use yii\web\AssetBundle;
+#Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net
 
-class MenuAsset extends AssetBundle{
+class MenuAsset extends \yii\web\AssetBundle {
     public $sourcePath = '@vendor/pceuropa/yii2-menu/assets';
     public $baseUrl = '@web';
     public $js = [
         'js/Sortable.min.js',
-        'js/menu.js',
+        'js/menu.min.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

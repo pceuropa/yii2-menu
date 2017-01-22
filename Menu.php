@@ -1,6 +1,6 @@
 <?php
 namespace pceuropa\menu;
-#Copyright (c) 2017 Rafal Marguzewicz pceuropa.net LTD
+#Copyright (c) 2017 Rafal Marguzewicz pceuropa.net
 
 use Yii;
 use yii\helpers\Html;

@@ -21,7 +21,7 @@ class Model extends \yii\db\ActiveRecord {
 		return [
 			[['menu_id'], 'integer'],
 			[['menu', 'menu_name'], 'string'],
-            ['menu', 'default', 'value' => json_encode(['left' => [], 'right' => []]), 'on' => 'insert'],
+            ['menu', 'default', 'value' => json_encode([ 'left' => [], 'right' => [] ]), 'on' => 'insert'],
 		];
 	}
 
