@@ -1,16 +1,12 @@
 <?php 
-#Copyright (c) 2017 Rafal Marguzewicz pceuropa.net LTD
+#Copyright (c) 2016-2017 Rafal Marguzewicz pceuropa.net
 // $this->registerJsFile('@web/js/menu/menu.js', ['depends' => 'yii\web\YiiAsset']);
 
 use yii\bootstrap\BaseHtml;
-use \pceuropa\menu\models\Model;
-$glyphicons = \pceuropa\menu\icons\Glyphicons::forge()->getAll();
-$glyphicons = json_encode($glyphicons);
-$this->registerJs(
-    "
-    window.glyphicons = {$glyphicons};
-    ",
-    \yii\web\View::POS_HEAD);
+use pceuropa\menu\models\Model;
+//$glyphicons = \pceuropa\menu\icons\Glyphicons::forge()->getAll();
+//$glyphicons = json_encode($glyphicons);
+//$this->registerJs( " window.glyphicons = {$glyphicons}; ", \yii\web\View::POS_HEAD);
 ?>
 
 
