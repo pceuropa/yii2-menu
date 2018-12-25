@@ -6,7 +6,7 @@ abstract class AbstractMenuIcons implements IMenuIcons
 {
     private static $instance = null;
 
-    public function forge()
+    public static function forge()
     {
         if (is_null(self::$instance))
             self::$instance = new static;
