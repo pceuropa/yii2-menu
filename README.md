@@ -41,7 +41,7 @@ $ php yii migrate/up --migrationPath=@vendor/pceuropa/yii2-menu/migrations
 ```
 
 
-### 2. Add the following code to config file Yii2
+### 2. Add the following code to view layout file Yii2
 ```php
 
 use pceuropa\menu\Menu;
